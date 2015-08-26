@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -eo pipefail
-
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 alexa_dispatcher_tmpdir() {
@@ -30,9 +28,3 @@ alexa_dispatcher_logdir() {
 
   pwd
 }
-
-main() {
-  alexa_dispatcher_locate
-}
-
-[[ "$0" == "$BASH_SOURCE" ]] && main

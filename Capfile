@@ -26,6 +26,7 @@ namespace :deploy do
 
     run "mkdir -p #{shared_path}/log"
     run "mkdir -p #{shared_path}/tmp"
+    run "mkdir -p #{shared_path}/config"
 
     run "ln -s #{shared_path}/* #{release_path}"
 
