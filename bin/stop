@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -eo pipefail
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source $DIR/locate.sh
+
+pid=$(alexa_dispatcher_locate)
+if [[ ! -z "$pid" ]]; then
+  pkill -TERM -P "$pid" || exit 1
+
+  while [[ "$(alexa_dispatcher_locate)" == "$pid" ]]; do
+    echo "$0: waiting for shutdown..."
+    sleep 1
+  done
+fi

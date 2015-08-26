@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -eo pipefail
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source $DIR/locate.sh
+
+nohup bash -c "$DIR/run.sh" &> $(alexa_dispatcher_logdir)/alexa_dispatcher.out &
+echo $! > $(alexa_dispatcher_pidfile)
